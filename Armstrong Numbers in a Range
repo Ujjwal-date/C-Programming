@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+void main()
+{
+    int n, i, temp, digit, sum, count, power, j;
+
+    printf("Enter range: ");
+    scanf("%d", &n);
+
+    for(i = 1; i <= n; i++)
+    {
+        temp = i;
+        count = 0;
+        sum = 0;
+
+        while(temp > 0)
+        {
+            count++;
+            temp = temp / 10;
+        }
+
+        temp = i;
+
+        while(temp > 0)
+        {
+            digit = temp % 10;
+            power = 1;
+
+            for(j = 1; j <= count; j++)
+                power = power * digit;
+
+            sum = sum + power;
+            temp = temp / 10;
+        }
+
+        if(sum == i)
+            printf("%d ", i);
+    }
+}
