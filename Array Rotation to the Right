@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+void main()
+{
+    int a[100], n, k, i, temp;
+
+    printf("Enter array size: ");
+    scanf("%d", &n);
+
+    if(n <= 0 || n > 100)
+    {
+        printf("Invalid array size");
+        return;
+    }
+
+    for(i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    printf("Enter rotation count: ");
+    scanf("%d", &k);
+
+    k = k % n;
+
+    while(k > 0)
+    {
+        temp = a[n - 1];
+
+        for(i = n - 1; i > 0; i--)
+            a[i] = a[i - 1];
+
+        a[0] = temp;
+        k--;
+    }
+
+    printf("Rotated array:\n");
+
+    for(i = 0; i < n; i++)
+        printf("%d ", a[i]);
+}
